@@ -1,54 +1,68 @@
-# Ritesh Poriya's Portfolio 👨‍💻
+#Ritesh Poriya`s Full Stack Developer Profile
 
-Welcome to my portfolio! This project, built with Angular, reflects my journey and expertise in web development. Explore the various sections to learn more about me and my work.
+[comment]: <> (![Ritesh Poriya]&#40;https://your-profile-image-url.com&#41;)
+## 👋 Hello World!
 
-## Development server 🛠️
-To experience this portfolio locally:
-1. Clone the repository to your machine.
-2. Run `ng serve` for a development server.
-3. Open your browser and navigate to `http://localhost:4200/`. The application will automatically reload with any source file changes.
+I'm Your Name, a passionate and experienced Full Stack Developer with a knack for turning ideas into reality. My expertise spans across the entire web development stack, from front-end to back-end, and I thrive in creating robust, scalable, and user-friendly applications.
 
-## Sections 📚
-### Home 🏠
-The landing page provides an overview of who I am and what I do.
+## 🚀 About Me
 
-### About Me 🧑‍💼
-Learn about Ritesh Poriya, an Experienced Web Developer 🚀. I specialize in JavaScript, Node.js, Angular, and GraphQL. I am also a Database Enthusiast 📊 and am passionate about Problem Solving 🔍💡.
+- 🚀 Experienced Web Developer with a passion for problem-solving and innovative solutions 💻<br>
+- 🌱 I'm always learning and exploring new technologies to stay at the forefront of the ever-evolving tech landscape.
+- 💬 Ask me about Any Technology or Framework you're passionate about.
+- 📫 How to reach me: riteshporiya124@gmail.com or [LinkedIn](https://www.linkedin.com/in/riteshporiyawebdev/).
+- 😄 Pronouns: He/Him
+- 🌐 Check out my portfolio: [Portfolio](https://riteshporiya.dev)
 
-### Resume 📄
-View and download my resume to get detailed information about my professional experience.
+## 🌐 Socials:
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/riteshporiyawebdev/) [![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/riteshporiya) [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/riteshporiya)
 
-### Services 🛠️
-Discover the services I offer and how I can contribute to projects or collaborations.
+# 💻 Languages
 
-### Skills 💻
-Explore my technical skills in the field of web development.
+![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=plastic&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=plastic&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=plastic&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=plastic&logo=css3&logoColor=white)
 
-### Projects 🚧
-Check out the projects I've worked on. Each project includes details about the technologies used and my role in its development.
+# 🚀 Frameworks/Mobile
 
-### My Blog ✍️
-Read articles and blog posts I've written, sharing insights, experiences, and thoughts on various topics.
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=plastic&logo=angular&logoColor=white)
+![Node.JS](https://img.shields.io/badge/Node.js-43853D?style=plastic&logo=node.js&logoColor=white)
+![Express.JS](https://img.shields.io/badge/Express.js-000000?style=plastic&logo=express&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=plastic&logo=bootstrap&logoColor=white)
+![JQuery](https://img.shields.io/badge/jQuery-0769AD?style=plastic&logo=jquery&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=plastic&logo=tailwind-css&logoColor=white)
+![SASS](https://img.shields.io/badge/Sass-CC6699?style=plastic&logo=sass&logoColor=white)
+![Material-UI](https://img.shields.io/badge/Material--UI-0081CB?style=plastic&logo=material-ui&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=plastic&logo=python&logoColor=white)
+![GraphQL](https://img.shields.io/badge/GraphQl-E10098?style=plastic&logo=graphql&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=plastic&logo=Postman&logoColor=white)
 
-### Contact 📬
-Find ways to get in touch with me. Whether you have a question, collaboration idea, or just want to say hello, I'm eager to connect.
+### 🛢️ Databases
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=plastic&logo=postgresql&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-00000F?style=plastic&logo=mysql&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=plastic&logo=mongodb&logoColor=white)
 
-## Code Scaffolding 🏗️
-For technical insights, I've used Angular CLI for development. You can use Angular CLI commands, such as `ng generate component component-name`, for code scaffolding.
+### ☁  Cloud
+![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=plastic&logo=google-cloud&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-ffca28?style=plastic&logo=firebase&logoColor=black)
+![Heroku](https://img.shields.io/badge/Heroku-430098?style=plastic&logo=heroku&logoColor=white)
 
-## Build 🚀
-To build the project for deployment, run `ng build`. The build artifacts will be stored in the `dist/` directory.
+### 🛠️ IDEs
 
-## Unit Tests 🧪
-I've implemented unit tests for the project. Run `ng test` to execute the unit tests using Karma.
+![Visual Studio Code](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=plastic&logo=visual%20studio%20code&logoColor=white)
+![IntellijIdea](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=plastic&logo=intellij-idea&logoColor=white)
 
-## End-to-End Tests 🔄
-For end-to-end testing, run `ng e2e`. Keep in mind that you may need to add a package that implements end-to-end testing capabilities.
+# 📊 GitHub Stats:
+![](https://github-readme-stats.vercel.app/api?username=riteshporiya&theme=blue-green&hide_border=false&include_all_commits=false&count_private=false) <br/>
+![](https://github-readme-streak-stats.herokuapp.com/?user=riteshporiya&theme=blue-green&hide_border=false) <br/>
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=riteshporiya&theme=blue-green&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
-## Further Help ❓
-If you have any questions or need further assistance, feel free to reach out. You can also refer to the [Angular CLI Overview and Command Reference](https://angular.io/cli) page for more information on Angular CLI.
+## 🏆 GitHub Trophies
+![](https://github-profile-trophy.vercel.app/?username=riteshporiya&theme=discord&no-frame=true&no-bg=true&margin-w=4)
 
-## 📄License
-This Project is licensed under the [MIT License](LICENSE), so you're welcome to use and share the content as you see fit.
+### ✍️ Random Dev Quote
+![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=merko)
 
-Thank you for visiting Ritesh Poriya's Portfolio! 👋
+### 🔝 Top Contributed Repo
+![](https://github-contributor-stats.vercel.app/api?username=riteshporiya&limit=5&theme=dark&combine_all_yearly_contributions=true)
