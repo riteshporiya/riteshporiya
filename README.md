@@ -1,9 +1,9 @@
-# Ritesh Poriya`s Full Stack Developer Profile
+# Ritesh Poriya`s MEAN Stack Developer
 
-[comment]: <> (![Ritesh Poriya]&#40;https://your-profile-image-url.com&#41;)
+![Ritesh Poriya](./src/assets/images/github-header-image.png)
 ## 👋 Hello World!
 
-I'm Ritesh Poriya, a passionate and experienced Full Stack Developer with a knack for turning ideas into reality. My expertise spans across the entire web development stack, from front-end to back-end, and I thrive in creating robust, scalable, and user-friendly applications.
+I'm Ritesh Poriya, a passionate and experienced MEAN Stack Developer with a knack for turning ideas into reality. My expertise spans across the entire web development stack, from front-end to back-end, and I thrive in creating robust, scalable, and user-friendly applications.
 
 ## 🚀 About Me
 
