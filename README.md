@@ -12,7 +12,7 @@ I'm Ritesh Poriya, a passionate and experienced MEAN Stack Developer with a knac
 - 💬 Ask me about Any Technology or Framework you're passionate about.
 - 📫 How to reach me: riteshporiya124@gmail.com or [LinkedIn](https://www.linkedin.com/in/riteshporiyawebdev/).
 - 😄 Pronouns: He/Him
-- 🌐 Check out my portfolio: [Portfolio](https://riteshporiya.dev)
+- 🌐 Check out my portfolio: [Portfolio](https://riteshporiya.vercel.app/)
 
 ## 🌐 Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/riteshporiyawebdev/) [![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/riteshporiya) [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/riteshporiya)
