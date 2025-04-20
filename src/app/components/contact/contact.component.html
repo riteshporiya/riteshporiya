@@ -1,0 +1,97 @@
+<section class="contact section" id="contact">
+  <div class="contact__container container">
+    <!-- Left column - Contact info -->
+    <div class="contact__left">
+      <h2 class="contact__title">{{ languageService.translate('contact.title') }}</h2>
+      <h1 class="contact__heading">REACH OUT ME</h1>
+
+      <!-- Contact cards -->
+      <div class="contact__cards">
+        <!-- Chat card -->
+        <div class="contact__card">
+          <div class="contact__card-icon">
+            <i class="uil uil-comment-dots"></i>
+          </div>
+          <div class="contact__card-content">
+            <h3 class="contact__card-title">Chat to us</h3>
+            <p class="contact__card-text">Our friendly team is there to help.</p>
+            <a href="mailto:riteshporiya124@gmail.com" class="contact__card-link">riteshporiya124&#64;gmail.com</a>
+          </div>
+        </div>
+
+        <!-- Visit card -->
+        <div class="contact__card">
+          <div class="contact__card-icon">
+            <i class="uil uil-map-marker"></i>
+          </div>
+          <div class="contact__card-content">
+            <h3 class="contact__card-title">Visit us</h3>
+            <p class="contact__card-text">Come say hello at our office HQ.</p>
+            <p class="contact__card-address">Surat, Gujarat, India</p>
+          </div>
+        </div>
+
+        <!-- Call card -->
+        <div class="contact__card">
+          <div class="contact__card-icon">
+            <i class="uil uil-phone"></i>
+          </div>
+          <div class="contact__card-content">
+            <h3 class="contact__card-title">Call us</h3>
+            <p class="contact__card-text">Mon-Fri from 8am to 5pm.</p>
+            <a href="tel:+91-9825000000" class="contact__card-link">+91-9825000000</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Maps -->
+      <div class="contact__map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7439.541477568848!2d72.8583748219283!3d21.201264515263027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1745129970516!5m2!1sen!2sin"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <!-- Right column - Contact form -->
+    <div class="contact__right">
+      <div class="contact__form-wrapper">
+        <h2 class="contact__form-title">Got Ideas? We've got the skills. Let's team up.</h2>
+        <p class="contact__form-subtitle">Tell us more about yourself and what you're got in mind.</p>
+
+        <form class="contact__form" (submit)="$event.preventDefault()">
+          <div class="contact__form-group">
+            <div class="contact__form-field">
+              <label for="name" class="contact__form-label">FIRST NAME</label>
+              <input type="text" id="name" class="contact__form-input" placeholder="Name *" required>
+            </div>
+
+            <div class="contact__form-field">
+              <label for="email" class="contact__form-label">YOUR EMAIL</label>
+              <input type="email" id="email" class="contact__form-input" placeholder="Email *" required>
+            </div>
+          </div>
+
+          <div class="contact__form-field">
+            <label for="subject" class="contact__form-label">SUBJECT</label>
+            <input type="text" id="subject" class="contact__form-input" placeholder="Subject *" required>
+          </div>
+
+          <div class="contact__form-field">
+            <label for="message" class="contact__form-label">YOUR MESSAGE</label>
+            <textarea id="message" class="contact__form-input contact__form-textarea" placeholder="Your message *"
+              required></textarea>
+          </div>
+
+          <button type="submit" class="contact__form-button">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="contact__decoration contact__decoration-1"></div>
+  <div class="contact__decoration contact__decoration-2"></div>
+</section>

@@ -1,0 +1,90 @@
+.language-selector {
+  position: relative;
+  
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--px-text);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: var(--px-theme);
+    }
+    
+    .language-flag {
+      font-size: 1.25rem;
+    }
+    
+    .language-label {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--px-container);
+    border: 1px solid var(--px-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 150px;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    z-index: 10;
+    display: none;
+    
+    &.show {
+      display: block;
+    }
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--px-text);
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    border-radius: 0.3rem;
+    
+    &:hover, &:focus {
+      background-color: rgba(var(--px-white-rgb), 0.05);
+      color: var(--px-theme);
+    }
+    
+    &.active {
+      background-color: var(--px-theme);
+      color: white;
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .language-selector {
+    position: static;
+  }
+}
+
+/* Fix for right-aligned dropdown on small screens */
+@media screen and (max-width: 350px) {
+  .language-selector {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+  }
+}

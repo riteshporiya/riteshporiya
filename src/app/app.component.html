@@ -1,3 +1,55 @@
-<app-header></app-header>
-<app-home></app-home>
-<router-outlet></router-outlet>
+<div class="app-container" [ngClass]="{'dark-theme': themeService.darkMode()}">
+  <!-- Mobile menu toggle button (only visible on mobile) -->
+  <button class="mobile-toggle" *ngIf="isMobile()" (click)="toggleMenu()" aria-label="Toggle menu">
+    <i class="uil" [ngClass]="isMenuOpen ? 'uil-times' : 'uil-bars'"></i>
+  </button>
+  
+  <!-- Menu overlay for mobile -->
+  <div class="menu-overlay" [class.active]="isMenuOpen" (click)="closeMenu()"></div>
+  
+  <!-- Left sidebar navigation -->
+  <app-header 
+    class="sidebar" 
+    [ngClass]="{'show-menu': isMenuOpen}" 
+    (menuToggled)="onMenuToggled($event)">
+  </app-header>
+
+  <!-- Main content area -->
+  <main class="main-content">
+    <router-outlet></router-outlet>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="flex justify-content-between align-items-center">
+        <div class="footer-info">
+          <a href="#" class="footer-avatar">
+            <img src="../assets/img/perfil1.jpg" alt="Ritesh" />
+          </a>
+          <h6>Ritesh's Portfolio</h6>
+        </div>
+        <p class="copyright">
+          © {{ currentYear }} Made with <i class="uil uil-heart"></i> by Ritesh
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Language switcher (floating) -->
+  <!-- <app-language-switcher class="language-switcher-floating"></app-language-switcher> -->
+
+  <!-- Theme toggle (floating) -->
+  <!-- <div class="theme-toggle-floating" (click)="themeService.toggleTheme()">
+    <i [class]="'uil ' + themeService.iconClass()"></i>
+  </div> -->
+
+  <!-- Scroll to top button -->
+  <a 
+    href="#" 
+    class="scrollup" 
+    id="scroll-up" 
+    [class.show-scroll]="scrollService.scrollUpVisible()"
+    (click)="scrollService.scrollToTop(); $event.preventDefault()"
+  >
+    <i class="uil uil-arrow-up scrollup__icon"></i>
+  </a>
+</div>

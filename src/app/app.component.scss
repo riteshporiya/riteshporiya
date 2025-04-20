@@ -1,0 +1,565 @@
+@import '../assets/scss/variables';
+
+// Define more explicit breakpoints for consistent responsive behavior
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktop: 1200px;
+
+.app-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  background-color: var(--px-bg);
+  color: var(--px-text);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden; // Prevent horizontal scrolling on mobile
+}
+
+/* Global theme variables - defaults for dark theme */
+:root {
+  --px-theme: #AF2676;
+  --px-theme-2: #441B45;
+  --px-white: #fff;
+  --px-white-rgb: 255,255,255;
+  --px-text: #FFFFFF;
+  --px-heading: #FFFFFF;
+  --px-bg: #100E24;
+  --px-dark: #0D0B1C;
+  --px-container: #121927;
+  --px-border: rgba(255, 255, 255, 0.05);
+  --px-card-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  
+  /* Theme RGB values */
+  --px-theme-rgb: 175, 38, 118;
+  --px-theme-2-rgb: 68, 27, 69;
+}
+
+/* Light theme overrides - moved to styles.scss for centralized theme management */
+.dark-theme {
+  --bs-body-color: #adb5bd;
+  --bs-body-bg: #212529;
+  --px-text: #FFFFFF;
+  --px-heading: #FFFFFF;
+  --px-bg: #100E24;
+  --px-dark: #0D0B1C;
+  --px-container: #121927;
+  --px-border: rgba(255, 255, 255, 0.05);
+  --px-card-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile toggle button */
+.mobile-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--px-theme), var(--px-theme-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  z-index: 2002; // Higher z-index to be above header
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media screen and (min-width: ($large-desktop + 1)) {
+    display: none;
+  }
+  
+  @media screen and (max-width: $mobile) {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Add menu overlay for mobile */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 1500;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  
+  &.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+/* Sidebar component layout */
+.sidebar {
+  // Only apply sidebar styles in desktop mode
+  @media screen and (min-width: ($large-desktop + 1)) {
+    flex: 0 0 auto;
+    height: 100vh;
+    width: 280px;
+    z-index: 100;
+    background-color: var(--px-dark);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid var(--px-border);
+    overflow-y: auto;
+    flex-shrink: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  // Mobile/tablet sidebar styles
+  @media screen and (max-width: $large-desktop) {
+    position: fixed;
+    height: 100vh; 
+    width: 280px;
+    max-width: 85%;
+    z-index: 2000;
+    left: -100%; // Hide off-screen by default
+    background-color: var(--px-dark);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow-y: auto;
+    visibility: hidden; // Hide when off-screen
+    opacity: 0; // Make invisible when off-screen
+    
+    &.show-menu {
+      left: 0; // Show menu by sliding in from left
+      visibility: visible; // Make visible when shown
+      opacity: 1; // Make fully opaque when shown
+      
+      // Force display of all content inside sidebar when shown
+      .header, .nav, .nav__menu, .nav__link, .nav__footer, .nav__socials, .nav__controls {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      // Make all nav menu items visible
+      .nav__menu li, .nav__menu li a, .nav__menu li i, .nav__menu li span {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      // Make social buttons visible
+      .social-btn, .social-btn i {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      // Make theme toggle visible
+      .theme-toggle-btn, .theme-icon, .theme-icon i {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    }
+  }
+  
+  // Special handling for mobile (under 768px)
+  @media screen and (max-width: 767px) {
+    width: 280px;
+    max-width: 85%;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    
+    &.show-menu {
+      transform: translateX(0);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+  }
+  
+  // Ensure all content inside sidebar is visible in mobile view
+  .header {
+    @media screen and (max-width: $large-desktop) {
+      position: relative !important; // Change to relative position inside sidebar
+      height: 100% !important; // Take full height of sidebar
+      width: 100% !important; // Take full width of sidebar
+      box-shadow: none !important; // Remove shadow to avoid double shadow
+      display: flex !important; // Ensure display is flex
+      overflow-y: auto !important; // Allow scrolling if content is too tall
+      padding: 1.5rem !important; // Add proper padding
+      
+      // Make all sub-elements visible and properly styled
+      .nav {
+        display: flex !important;
+        flex-direction: column !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        height: calc(100% - 80px) !important;
+      }
+      
+      .nav__menu {
+        display: flex !important;
+        flex-direction: column !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        
+        li {
+          display: block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          width: 100% !important;
+          
+          a {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            
+            i, span {
+              display: inline-flex !important;
+              visibility: visible !important;
+              opacity: 1 !important;
+            }
+          }
+        }
+      }
+      
+      .logo {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      .nav__footer, .nav__socials, .nav__controls {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    }
+    
+    // Special mobile styles to ensure content is visible
+    @media screen and (max-width: 767px) {
+      padding: 1.5rem 1rem !important;
+      
+      .nav {
+        gap: 1rem;
+      }
+      
+      .nav__menu {
+        margin-bottom: 1.5rem;
+      }
+      
+      .logo {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+/* Main content layout */
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: var(--px-bg);
+  color: var(--px-text);
+  transition: background-color 0.4s ease, color 0.4s ease, margin-left 0.3s ease;
+  overflow-x: hidden;
+  position: relative;
+  
+  // Add margin only in desktop view
+  @media screen and (min-width: ($large-desktop + 1)) {
+    margin-left: 280px; /* Match header width */
+  }
+  
+  @media screen and (max-width: $large-desktop) {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5rem;
+  }
+  
+  @media screen and (max-width: $tablet) {
+    padding: 1.25rem;
+  }
+  
+  @media screen and (max-width: $mobile) {
+    padding: 1rem 0.75rem;
+  }
+}
+
+/* Floating buttons */
+.floating-btn {
+  position: fixed;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  z-index: 90;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--px-theme), var(--px-theme-2));
+  color: #fff;
+}
+
+/* Scroll to top button */
+.scrollup {
+  @extend .floating-btn;
+  bottom: 1.5rem;
+  opacity: 0.8;
+  transform: translateY(100px);
+  
+  &:hover {
+    transform: translateY(0) scale(1.1);
+    opacity: 1;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    
+    .scrollup__icon {
+      transform: translateY(-4px);
+    }
+  }
+  
+  &.show-scroll {
+    transform: translateY(0);
+  }
+}
+
+.scrollup__icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Theme toggle button */
+.theme-toggle-floating {
+  @extend .floating-btn;
+  bottom: 4.5rem;
+  
+  &:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+}
+
+/* Language switcher button */
+.language-switcher-floating {
+  @extend .floating-btn;
+  bottom: 7.5rem;
+  background-color: var(--px-container);
+  color: var(--px-theme);
+  border: 1px solid var(--px-border);
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    background-color: var(--px-theme);
+  }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 767px) {
+  .floating-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    right: 1rem;
+  }
+  
+  .scrollup {
+    bottom: 1rem;
+  }
+  
+  .theme-toggle-floating {
+    bottom: 3.5rem;
+  }
+  
+  .language-switcher-floating {
+    bottom: 6rem;
+  }
+  
+  .scrollup__icon,
+  .theme-toggle-floating i {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .scrollup,
+  .language-switcher-floating,
+  .theme-toggle-floating {
+    right: 3rem;
+  }
+  
+  .main-content {
+    padding: 2.5rem 3rem;
+  }
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Dark/Light mode transitions */
+.dark-mode {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Footer in app component */
+.footer {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  background-color: #100d24;
+  
+  @media (max-width: $tablet) {
+    padding: 1rem;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    @media (max-width: $mobile) {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+  }
+  
+  .footer-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .footer-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      rotate: 90deg;
+    }
+  }
+  
+  h6 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--px-white);
+    
+    @media (max-width: $mobile) {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .copyright {
+    margin: 0;
+    color: var(--px-white);
+    font-size: 0.9rem;
+    
+    @media (max-width: $mobile) {
+      font-size: 0.8rem;
+    }
+    
+    i {
+      color: #e25555;
+    }
+  }
+}
+
+// Footer light theme enhancements 
+[data-bs-theme=light] {
+  .footer {
+    background-color: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.03);
+    position: relative;
+    
+    // Decorative pattern for footer in light theme
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(rgba(var(--px-theme-rgb), 0.02) 2px, transparent 2px),
+        radial-gradient(rgba(var(--px-theme-2-rgb), 0.02) 2px, transparent 2px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      opacity: 1;
+      z-index: 0;
+    }
+    
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-info {
+      .footer-avatar {
+        border: 2px solid var(--px-theme);
+        box-shadow: 0 3px 8px rgba(var(--px-theme-rgb), 0.15);
+      }
+      
+      h6 {
+        color: var(--px-heading);
+        font-weight: 600;
+      }
+    }
+    
+    .copyright {
+      color: var(--text-color-light);
+    }
+  }
+  
+  // Scroll to top button in light theme
+  #return-to-top {
+    background: linear-gradient(135deg, var(--px-theme), var(--px-theme-2));
+    box-shadow: 0 5px 15px rgba(var(--px-theme-rgb), 0.2);
+    
+    &:hover {
+      transform: translateY(-5px) rotate(360deg);
+      box-shadow: 0 8px 20px rgba(var(--px-theme-rgb), 0.3);
+    }
+    
+    i {
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+  }
+}

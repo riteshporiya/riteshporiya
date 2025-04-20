@@ -1,0 +1,19 @@
+<div class="language-selector">
+  <button class="dropdown-toggle" (click)="toggleDropdown()" aria-label="Change language">
+    <span class="language-flag">{{ getCurrentFlag() }}</span>
+    <span class="language-label">{{ getCurrentLanguageName() }}</span>
+    <i class="uil" [ngClass]="showLanguageDropdown ? 'uil-angle-up' : 'uil-angle-down'"></i>
+  </button>
+  
+  <div class="dropdown-menu" [class.show]="showLanguageDropdown">
+    <button 
+      *ngFor="let lang of languageService.availableLanguages"
+      class="dropdown-item" 
+      [class.active]="languageService.language() === lang.code"
+      (click)="changeLanguage(lang)"
+    >
+      <span class="language-flag">{{ lang.flag }}</span>
+      <span class="language-name">{{ lang.name }}</span>
+    </button>
+  </div>
+</div>

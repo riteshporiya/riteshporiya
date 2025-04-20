@@ -1,0 +1,71 @@
+<!-- Sidebar overlay for mobile -->
+<div class="nav__overlay" [class.show-overlay]="showMenu" (click)="closeMenu()"></div>
+
+<!-- Desktop Sidebar Header -->
+<header class="header" [ngClass]="{'shadow-header': headerShadow, 'show-menu': showMenu}">
+  <!-- Mobile close button -->
+  <!-- <button class="mobile-close-btn" *ngIf="isMobileView()" (click)="closeMenu()">
+    <i class="uil uil-times"></i>
+  </button> -->
+
+  <!-- Header logo -->
+  <a href="#" class="logo">Ritesh<span>.</span></a>
+  
+  <nav class="nav">
+    <!-- Navigation links -->
+    <ul class="nav__menu">
+      <li *ngFor="let item of navItems; let i = index">
+        <a [routerLink]="[item.path]" 
+           [class.active-link]="activeSection === item.id"
+           (click)="setActiveSection(item.id); closeMenu()"
+           class="nav__link">
+          <i [class]="'uil ' + item.icon"></i>
+          <span>{{ item.title }}</span>
+        </a>
+      </li>
+    </ul>
+    
+    <!-- Bottom actions -->
+    <div class="nav__footer">
+      <!-- Social Links -->
+      <div class="nav__socials">
+        <a href="https://www.linkedin.com/in/riteshporiyawebdev/" target="_blank" class="soci" aria-label="LinkedIn">
+          <i class="uil uil-linkedin-alt"></i>
+        </a>
+        <a href="https://github.com/riteshporiya" target="_blank" class="soci" aria-label="GitHub">
+          <i class="uil uil-github-alt"></i>
+        </a>
+        <a href="mailto:riteshporiya124@gmail.com" target="_blank" class="soci" aria-label="Email">
+          <i class="uil uil-envelope"></i>
+        </a>
+        <a href="tel:+31-644196203" target="_blank" class="soci" aria-label="Phone">
+          <i class="uil uil-phone-alt"></i>
+        </a>
+      </div>
+      
+      <!-- Controls for theme and language -->
+      <div class="nav__controls">
+        <!-- Theme toggle button - new modern design -->
+        <!-- <button 
+          class="theme-toggle-btn" 
+          (click)="toggleTheme()" 
+          [attr.title]="isDarkTheme() ? 'Switch to light mode' : 'Switch to dark mode'"
+          [attr.aria-label]="isDarkTheme() ? 'Switch to light mode' : 'Switch to dark mode'">
+          <div class="theme-toggle-track">
+            <div class="theme-toggle-icons"> -->
+              <!-- Sun icon -->
+              <!-- <div class="theme-icon sun-icon" [class.active]="!isDarkTheme()"> -->
+                <!-- <i class="uil uil-sun"></i>
+              </div> -->
+              <!-- Moon icon -->
+              <!-- <div class="theme-icon moon-icon" [class.active]="isDarkTheme()">
+                <i class="uil uil-moon"></i>
+              </div>
+            </div>
+            <div class="theme-toggle-thumb" [class.dark]="isDarkTheme()"></div>
+          </div>
+        </button> -->
+      </div>
+    </div>
+  </nav>
+</header>

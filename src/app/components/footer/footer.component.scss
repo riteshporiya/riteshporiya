@@ -1,0 +1,161 @@
+@import '../../../assets/scss/variables';
+
+// Define responsive breakpoints for consistency
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktop: 1200px;
+
+/*==================== FOOTER ====================*/
+.footer {
+  padding-top: 2rem;
+  
+  @media screen and (max-width: $mobile) {
+    padding-top: 1.5rem;
+  }
+
+  &__container {
+    row-gap: 3.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    @media screen and (max-width: $tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    @media screen and (max-width: $mobile) {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 1.5rem;
+    }
+  }
+
+  &__bg {
+    background-color: var(--first-color-second);
+    padding: 2rem 0 3rem;
+    
+    @media screen and (min-width: $desktop) {
+      padding: 3rem 0 3.5rem;
+    }
+    
+    @media screen and (max-width: $mobile) {
+      padding: 1.5rem 0 2rem;
+    }
+  }
+
+  &__title {
+    font-size: var(--h1-font-size);
+    margin-bottom: var(--mb-0-25);
+    color: #fff;
+    
+    @media screen and (max-width: $mobile) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: var(--small-font-size);
+    color: #fff;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    
+    @media screen and (max-width: $tablet) {
+      column-gap: 1.5rem;
+    }
+    
+    @media screen and (max-width: $mobile) {
+      flex-direction: column;
+      row-gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--first-color-lighter);
+    }
+  }
+
+  &__socials {
+    font-size: 1.25rem;
+    display: flex;
+    column-gap: 1.5rem;
+    justify-self: flex-end;
+    
+    @media screen and (max-width: $mobile) {
+      justify-content: center;
+      column-gap: 1.25rem;
+    }
+  }
+
+  &__social {
+    color: #fff;
+    font-size: 1.25rem;
+    
+    @media screen and (max-width: $mobile) {
+      font-size: 1.1rem;
+    }
+
+    &:hover {
+      color: var(--first-color-lighter);
+    }
+  }
+
+  &__copy {
+    font-size: var(--smaller-font-size);
+    text-align: center;
+    color: var(--text-color-light);
+    margin-top: 4.5rem;
+    
+    @media screen and (max-width: $tablet) {
+      margin-top: 3rem;
+    }
+    
+    @media screen and (max-width: $mobile) {
+      margin-top: 2rem;
+      font-size: 0.7rem;
+    }
+  }
+
+  &__title,
+  &__subtitle,
+  &__link,
+  &__social {
+    color: #fff;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: $medium) {
+  .footer {
+    &__container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__bg {
+      padding: 3rem 0 3.5rem;
+    }
+
+    &__links {
+      flex-direction: row;
+      column-gap: 2rem;
+    }
+
+    &__socials {
+      justify-self: flex-end;
+    }
+
+    &__copy {
+      margin-top: 4.5rem;
+    }
+  }
+}

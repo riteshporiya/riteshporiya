@@ -1,0 +1,221 @@
+<section class="skills section" id="skills">
+  <h2 class="section__title">{{ languageService.translate('skills.title') }}</h2>
+  <span class="section__subtitle">{{ languageService.translate('skills.subtitle') }}</span>
+
+  <div class="skills__container container">
+    <!-- Skills Categories tabs -->
+    <div class="skills__tabs">
+      <button 
+        class="skills__tab-btn" 
+        [class.active]="activeTab === 'top'"
+        (click)="switchTab('top')"
+      >
+        <i class="uil uil-star"></i>
+        <span>{{ languageService.translate('skills.topSkills') }}</span>
+      </button>
+      <button 
+        class="skills__tab-btn" 
+        [class.active]="activeTab === 'frontend'"
+        (click)="switchTab('frontend')"
+      >
+        <i class="uil uil-window"></i>
+        <span>{{ languageService.translate('skills.frontendDev') }}</span>
+      </button>
+      <button 
+        class="skills__tab-btn" 
+        [class.active]="activeTab === 'backend'"
+        (click)="switchTab('backend')"
+      >
+        <i class="uil uil-server-network"></i>
+        <span>{{ languageService.translate('skills.backendDev') }}</span>
+      </button>
+      <button 
+        class="skills__tab-btn" 
+        [class.active]="activeTab === 'other'"
+        (click)="switchTab('other')"
+      >
+        <i class="uil uil-apps"></i>
+        <span>{{ languageService.translate('skills.otherSkills') }}</span>
+      </button>
+    </div>
+
+    <!-- Skills Tab Content -->
+    <div class="skills__content">
+      <!-- Top Skills Content -->
+      <div class="skills__tab-content" [class.active]="activeTab === 'top'">
+        <div class="skills__grid">
+          <div class="skills__card" *ngFor="let skill of topSkills; let i = index" 
+               [attr.data-index]="i"
+               [class.reveal]="isInViewport"
+               (mouseenter)="onCardHover(i)">
+            <div class="skills__card-inner">
+              <div class="skills__card-header">
+                <i [class]="skill.icon"></i>
+                <h3 class="skills__card-name">{{ skill.name }}</h3>
+              </div>
+              <div class="skills__card-info">
+                <div class="skills__card-progress-container">
+                  <div class="skills__card-progress">
+                    <svg width="80" height="80" viewBox="0 0 100 100">
+                      <defs>
+                        <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="var(--px-theme)" />
+                          <stop offset="100%" stop-color="var(--px-theme-2)" />
+                        </linearGradient>
+                      </defs>
+                      <circle class="skills__card-progress-bg" cx="50" cy="50" r="45" />
+                      <circle class="skills__card-progress-fill" 
+                              cx="50" cy="50" r="45" 
+                              [style.stroke]="'url(#progressGradient)'"
+                              [style.stroke-dashoffset.px]="calculateStrokeDashoffset(skill.level)"
+                              [style.--final-offset.px]="calculateStrokeDashoffset(skill.level)" />
+                    </svg>
+                    <span class="skills__card-level" [attr.data-value]="skill.level + '%'">{{ skill.level }}%</span>
+                  </div>
+                </div>
+                <p class="skills__card-description">{{ skill.description }}</p>
+              </div>
+            </div>
+            <!-- Particles for hover effect -->
+            <div class="particles" *ngIf="activeParticlesCard === i">
+              <div class="particles__item" *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frontend Skills Content -->
+      <div class="skills__tab-content" [class.active]="activeTab === 'frontend'">
+        <div class="skills__grid">
+          <div class="skills__card" *ngFor="let skill of frontendSkills; let i = index" 
+               [attr.data-index]="i"
+               [class.reveal]="isInViewport"
+               (mouseenter)="onCardHover(i)">
+            <div class="skills__card-inner">
+              <div class="skills__card-header">
+                <i [class]="skill.icon"></i>
+                <h3 class="skills__card-name">{{ skill.name }}</h3>
+              </div>
+              <div class="skills__card-info">
+                <div class="skills__card-progress-container">
+                  <div class="skills__card-progress">
+                    <svg width="80" height="80" viewBox="0 0 100 100">
+                      <defs>
+                        <linearGradient id="progressGradient{{i}}" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="var(--px-theme)" />
+                          <stop offset="100%" stop-color="var(--px-theme-2)" />
+                        </linearGradient>
+                      </defs>
+                      <circle class="skills__card-progress-bg" cx="50" cy="50" r="45" />
+                      <circle class="skills__card-progress-fill" 
+                              cx="50" cy="50" r="45" 
+                              [style.stroke]="'url(#progressGradient' + i + ')'"
+                              [style.stroke-dashoffset.px]="calculateStrokeDashoffset(skill.level)"
+                              [style.--final-offset.px]="calculateStrokeDashoffset(skill.level)" />
+                    </svg>
+                    <span class="skills__card-level" [attr.data-value]="skill.level + '%'">{{ skill.level }}%</span>
+                  </div>
+                </div>
+                <p class="skills__card-description">{{ skill.description }}</p>
+              </div>
+            </div>
+            <!-- Particles for hover effect -->
+            <div class="particles" *ngIf="activeParticlesCard === i">
+              <div class="particles__item" *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backend Skills Content -->
+      <div class="skills__tab-content" [class.active]="activeTab === 'backend'">
+        <div class="skills__grid">
+          <div class="skills__card" *ngFor="let skill of backendSkills; let i = index" 
+               [attr.data-index]="i"
+               [class.reveal]="isInViewport"
+               (mouseenter)="onCardHover(i)">
+            <div class="skills__card-inner">
+              <div class="skills__card-header">
+                <i [class]="skill.icon"></i>
+                <h3 class="skills__card-name">{{ skill.name }}</h3>
+              </div>
+              <div class="skills__card-info">
+                <div class="skills__card-progress-container">
+                  <div class="skills__card-progress">
+                    <svg width="80" height="80" viewBox="0 0 100 100">
+                      <defs>
+                        <linearGradient id="backendGradient{{i}}" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="var(--px-theme)" />
+                          <stop offset="100%" stop-color="var(--px-theme-2)" />
+                        </linearGradient>
+                      </defs>
+                      <circle class="skills__card-progress-bg" cx="50" cy="50" r="45" />
+                      <circle class="skills__card-progress-fill" 
+                              cx="50" cy="50" r="45" 
+                              [style.stroke]="'url(#backendGradient' + i + ')'"
+                              [style.stroke-dashoffset.px]="calculateStrokeDashoffset(skill.level)"
+                              [style.--final-offset.px]="calculateStrokeDashoffset(skill.level)" />
+                    </svg>
+                    <span class="skills__card-level" [attr.data-value]="skill.level + '%'">{{ skill.level }}%</span>
+                  </div>
+                </div>
+                <p class="skills__card-description">{{ skill.description }}</p>
+              </div>
+            </div>
+            <!-- Particles for hover effect -->
+            <div class="particles" *ngIf="activeParticlesCard === i">
+              <div class="particles__item" *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Skills Content -->
+      <div class="skills__tab-content" [class.active]="activeTab === 'other'">
+        <div class="skills__grid">
+          <div class="skills__card" *ngFor="let skill of otherSkills; let i = index" 
+               [attr.data-index]="i"
+               [class.reveal]="isInViewport"
+               (mouseenter)="onCardHover(i)">
+            <div class="skills__card-inner">
+              <div class="skills__card-header">
+                <i [class]="skill.icon"></i>
+                <h3 class="skills__card-name">{{ skill.name }}</h3>
+              </div>
+              <div class="skills__card-info">
+                <div class="skills__card-progress-container">
+                  <div class="skills__card-progress">
+                    <svg width="80" height="80" viewBox="0 0 100 100">
+                      <defs>
+                        <linearGradient id="otherGradient{{i}}" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="var(--px-theme)" />
+                          <stop offset="100%" stop-color="var(--px-theme-2)" />
+                        </linearGradient>
+                      </defs>
+                      <circle class="skills__card-progress-bg" cx="50" cy="50" r="45" />
+                      <circle class="skills__card-progress-fill" 
+                              cx="50" cy="50" r="45" 
+                              [style.stroke]="'url(#otherGradient' + i + ')'"
+                              [style.stroke-dashoffset.px]="calculateStrokeDashoffset(skill.level)"
+                              [style.--final-offset.px]="calculateStrokeDashoffset(skill.level)" />
+                    </svg>
+                    <span class="skills__card-level" [attr.data-value]="skill.level + '%'">{{ skill.level }}%</span>
+                  </div>
+                </div>
+                <p class="skills__card-description">{{ skill.description }}</p>
+              </div>
+            </div>
+            <!-- Particles for hover effect -->
+            <div class="particles" *ngIf="activeParticlesCard === i">
+              <div class="particles__item" *ngFor="let item of [0,1,2,3,4,5,6,7,8,9]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Background decoration -->
+  <div class="skills__bg-decoration skills__bg-decoration-1"></div>
+  <div class="skills__bg-decoration skills__bg-decoration-2"></div>
+</section>

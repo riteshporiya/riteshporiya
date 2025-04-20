@@ -1,0 +1,348 @@
+@import "../../../assets/scss/variables";
+
+// Define responsive breakpoints for consistency
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktop: 1200px;
+
+// Responsive mixin
+@mixin responsive($breakpoint) {
+  @if $breakpoint == sm {
+    @media screen and (min-width: $mobile) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media screen and (min-width: $tablet) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media screen and (min-width: $desktop) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media screen and (min-width: $large-desktop) {
+      @content;
+    }
+  }
+}
+
+.portfolio-section {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+
+  .bg-decoration {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.4;
+
+    &.left {
+      top: 10%;
+      left: -5%;
+      background: var(--first-color);
+    }
+
+    &.right {
+      bottom: 10%;
+      right: -5%;
+      background: var(--first-color-alt);
+    }
+  }
+
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-title-container {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 0.5rem;
+
+    @include responsive(md) {
+      font-size: 3rem;
+    }
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text-color-light);
+    max-width: 600px;
+    margin: 0 auto;
+
+    @include responsive(md) {
+      font-size: 1.1rem;
+    }
+  }
+
+  .portfolio-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+
+    .category-btn {
+      padding: 0.75rem 1.25rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: var(--container-color);
+      color: var(--text-color);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+
+      &:hover {
+        background-color: var(--first-color-lighter);
+        color: var(--first-color);
+      }
+
+      &.active {
+        background-color: var(--first-color);
+        color: #fff;
+      }
+    }
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @include responsive(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include responsive(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .portfolio__card {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: var(--container-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+
+    &[reveal="true"] {
+      animation: reveal 0.6s forwards;
+    }
+
+    @for $i from 1 through 10 {
+      &[data-index="#{$i - 1}"] {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+      .portfolio__image {
+        transform: scale(1.05);
+      }
+
+      .portfolio__links {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .portfolio__card-inner {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio__image-container {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .portfolio__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .portfolio__links {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    .portfolio__link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background-color: var(--first-color);
+      color: #fff;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--first-color-alt);
+      }
+
+      i {
+        font-size: 1rem;
+      }
+    }
+
+    .portfolio__content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--title-color);
+      margin-bottom: 0.75rem;
+    }
+
+    .portfolio__description {
+      font-size: 0.9rem;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .portfolio__technologies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .portfolio__tech-tag {
+      padding: 0.25rem 0.75rem;
+      background-color: var(--first-color-lighter);
+      color: var(--first-color);
+      font-size: 0.8rem;
+      border-radius: 2rem;
+    }
+
+    // Particles animation
+    .portfolio__particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+
+      .particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background-color: var(--first-color);
+        border-radius: 50%;
+        opacity: 0;
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            left: random(100) * 1%;
+            top: random(100) * 1%;
+            animation: particle-animation 1.5s ease-in-out infinite;
+            animation-delay: $i * 0.1s;
+          }
+        }
+      }
+    }
+  }
+
+  .portfolio-load-more {
+    margin-top: 3rem;
+    text-align: center;
+
+    .load-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--first-color);
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--first-color-alt);
+      }
+
+      i {
+        font-size: 0.9rem;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover i {
+        transform: translateY(3px);
+      }
+    }
+  }
+}
+
+// Keyframes for animations
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes particle-animation {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(random(10) - 5px, random(10) - 5px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(random(20) - 10px, random(20) - 10px);
+    opacity: 0;
+  }
+}

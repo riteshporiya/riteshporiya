@@ -1,0 +1,86 @@
+<section class="home section" id="home">
+  <div class="container home__container py-4">
+    <div class="row home__content align-items-center g-4">
+      <!-- Left side with profile image and social icons -->
+      <div class="col-12 col-md-5 d-flex flex-column align-items-center home__left mb-4 mb-md-0">
+        <div class="home__img-container mb-3">
+          <div class="home__img-backdrop"></div>
+          <img class="home__img img-fluid" src="assets/img/perfil1.jpg" alt="profile" />
+          <div class="home__img-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+          </div>
+        </div>
+        <div class="home__social d-flex justify-content-center gap-3 mt-2">
+          <a href="https://www.linkedin.com/in/riteshporiyawebdev/" target="_blank" class="home__social-icon" aria-label="LinkedIn">
+            <i class="uil uil-linkedin-alt"></i>
+          </a>
+          <a href="https://github.com/riteshporiya" target="_blank" class="home__social-icon" aria-label="GitHub">
+            <i class="uil uil-github-alt"></i>
+          </a>
+          <a href="mailto:riteshporiya124@gmail.com" target="_blank" class="home__social-icon" aria-label="Email">
+            <i class="uil uil-envelope"></i>
+          </a>
+          <a href="tel:+31-644196203" target="_blank" class="home__social-icon" aria-label="Phone">
+            <i class="uil uil-phone-alt"></i>
+          </a>
+        </div>
+      </div>
+      <!-- Right side with text content -->
+      <div class="col-12 col-md-7 home__right">
+        <div class="home__data">
+          <span class="home__greeting">{{ languageService.translate('home.greeting') }}</span>
+          <h1 class="home__title">
+            <div class="home__title-text">
+              <span class="typed-text">{{ currentTypingText }}</span>
+              <span class="typed-cursor" [class.typed-cursor--blink]="cursorBlink">|</span>
+            </div>
+          </h1>
+          <h3 class="home__subtitle">{{ languageService.translate('home.subtitle') }}</h3>
+          <p class="home__description">{{ languageService.translate('home.description') }}</p>
+          
+          <!-- Stats row - better mobile layout -->
+          <div class="home__stats row g-3 text-center mt-4">
+            <div class="col-4 home__stat">
+              <span class="home__stat-number d-block">5+</span>
+              <span class="home__stat-label">Years Experience</span>
+            </div>
+            <div class="col-4 home__stat">
+              <span class="home__stat-number d-block">20+</span>
+              <span class="home__stat-label">Projects Completed</span>
+            </div>
+            <div class="col-4 home__stat">
+              <span class="home__stat-number d-block">10+</span>
+              <span class="home__stat-label">Happy Clients</span>
+            </div>
+          </div>
+          
+          <!-- Buttons row - better mobile layout -->
+          <div class="home__buttons mt-4 d-flex flex-wrap gap-3">
+            <a href="mailto:solaiRitesh0@gmail.com" class="button button--flex">
+              {{ languageService.translate('home.contact') }}<i class="uil uil-message button__icon"></i>
+            </a>
+            <a [routerLink]="['/portfolio']" class="button button--flex button--outline">
+              {{ languageService.translate('nav.portfolio') }}<i class="uil uil-scenery button__icon"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- <div class="home__scroll d-none d-md-block">
+          <a (click)="scrollDown()" class="home__scroll-button">
+            <i class="uil uil-mouse-alt home__scroll-mouse"></i>
+            <span class="home__scroll-name">Scroll Down</span>
+            <i class="uil uil-arrow-down home__scroll-arrow"></i>
+          </a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Background elements -->
+  <div class="home__bg">
+    <div class="home__bg-shape home__bg-shape-1"></div>
+    <div class="home__bg-shape home__bg-shape-2"></div>
+    <div class="home__bg-shape home__bg-shape-3"></div>
+  </div>
+</section>

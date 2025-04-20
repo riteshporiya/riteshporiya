@@ -1,0 +1,444 @@
+@import '../../../assets/scss/variables';
+
+/* ==================== SKILLS ==================== */
+.skills {
+  position: relative;
+  overflow: hidden;
+  
+  &__container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  &__tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    background: rgba(var(--px-white-rgb), 0.05);
+    border-radius: 2rem;
+    color: var(--px-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    i {
+      font-size: 1.25rem;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+      background: rgba(var(--px-white-rgb), 0.1);
+      transform: translateY(-2px);
+      
+      i {
+        transform: rotate(-10deg);
+        color: var(--px-theme);
+      }
+    }
+    
+    &.active {
+      background: linear-gradient(135deg, var(--px-theme), var(--px-theme-2));
+      color: var(--px-white);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      
+      i {
+        color: var(--px-white);
+      }
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        animation: shimmer 2s infinite;
+      }
+    }
+  }
+  
+  &__content {
+    position: relative;
+  }
+  
+  &__tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+    
+    &.active {
+      display: block;
+    }
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    
+    @media screen and (min-width: $medium) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media screen and (min-width: $large) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &__card {
+    background-color: var(--container-color, #fff);
+    border-radius: var(--border-radius-lg, 12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 1;
+    
+    // Glowing border effect on hover
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      z-index: -1;
+      background: linear-gradient(135deg, var(--px-theme), var(--px-theme-2));
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    &:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      
+      &::before {
+        opacity: 1;
+        animation: borderGlow 1.5s infinite alternate;
+      }
+      
+      .skills__card-progress-fill {
+        animation: progressPulse 2s infinite alternate;
+      }
+      
+      .skills__card-header i {
+        animation: iconFloat 1.5s ease infinite alternate;
+      }
+    }
+    
+    // Card reveal animation
+    &.reveal {
+      .skills__card-progress-fill {
+        animation: circleProgress 1.5s ease-out forwards;
+      }
+      
+      .skills__card-level {
+        animation: countUp 1.5s ease-out forwards;
+      }
+    }
+    
+    &-inner {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background-color: var(--container-color, #fff);
+      border-radius: var(--border-radius-lg, 12px);
+      position: relative;
+      z-index: 2;
+    }
+    
+    &-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      
+      i {
+        font-size: 2rem;
+        color: var(--px-theme);
+        background-color: rgba(var(--px-theme-rgb, 175, 38, 118), 0.1);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: 0 5px 15px rgba(var(--px-theme-rgb, 175, 38, 118), 0.2);
+        transition: all 0.3s ease;
+      }
+    }
+    
+    &-name {
+      font-size: var(--h3-font-size, 1.25rem);
+      color: var(--px-heading, #333);
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--px-theme), var(--px-theme-2));
+        transition: width 0.3s ease;
+      }
+    }
+    
+    &:hover &-name::after {
+      width: 40px;
+    }
+    
+    &-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    &-progress-container {
+      display: flex;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    
+    &-progress {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      svg {
+        transform: rotate(-90deg);
+        overflow: visible;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+      }
+      
+      &-bg {
+        fill: none;
+        stroke: var(--px-border, rgba(0, 0, 0, 0.05));
+        stroke-width: 6;
+        transition: all 0.3s ease;
+      }
+      
+      &-fill {
+        fill: none;
+        stroke: var(--px-theme, #AF2676);
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-dasharray: 283;
+        stroke-dashoffset: 283; /* Start from 0% filled */
+        transition: stroke-dashoffset 1.5s ease-out;
+      }
+    }
+    
+    &-level {
+      position: absolute;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--px-heading, #333);
+      opacity: 0;
+    }
+    
+    &-description {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--px-text, #4a4a4a);
+      line-height: 1.6;
+    }
+  }
+  
+  // Add animation delay for staggered appearance of cards
+  @for $i from 1 through 8 {
+    &__card[data-index="#{$i - 1}"] {
+      animation: fadeInUp 0.6s ease forwards;
+      animation-delay: #{$i * 0.1}s;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+  }
+  
+  &__bg-decoration {
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.04;
+    
+    &-1 {
+      width: 350px;
+      height: 350px;
+      background: var(--px-theme, #AF2676);
+      top: 10%;
+      right: -100px;
+    }
+    
+    &-2 {
+      width: 250px;
+      height: 250px;
+      background: var(--px-theme-2, #441B45);
+      bottom: 10%;
+      left: -50px;
+    }
+  }
+}
+
+// New animations
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes circleProgress {
+  0% { stroke-dashoffset: 283; } // Start from 0%
+  100% { stroke-dashoffset: var(--final-offset, 0); } // End at calculated value
+}
+
+@keyframes countUp {
+  0% { 
+    opacity: 0;
+    content: "0%";
+  }
+  20% { opacity: 1; }
+  100% { 
+    opacity: 1;
+    content: attr(data-value);
+  }
+}
+
+@keyframes progressPulse {
+  0% { 
+    stroke-width: 6;
+    filter: drop-shadow(0 0 2px rgba(var(--px-theme-rgb, 175, 38, 118), 0.5));
+  }
+  100% { 
+    stroke-width: 7;
+    filter: drop-shadow(0 0 8px rgba(var(--px-theme-rgb, 175, 38, 118), 0.8));
+  }
+}
+
+@keyframes borderGlow {
+  0% { 
+    opacity: 0.7;
+    box-shadow: 0 0 5px rgba(var(--px-theme-rgb, 175, 38, 118), 0.3);
+  }
+  100% { 
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(var(--px-theme-rgb, 175, 38, 118), 0.7);
+  }
+}
+
+@keyframes iconFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+// Existing animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Add particles effect for skill cards
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  
+  &__item {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--px-theme, #AF2676);
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFade 2s ease infinite;
+    
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        top: percentage(random(100) / 100);
+        left: percentage(random(100) / 100);
+        animation-delay: #{random(20) / 10}s;
+        transform: scale(#{random(10) / 10 + 0.5});
+      }
+    }
+  }
+}
+
+@keyframes particleFade {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(#{random(20) - 10}px, #{random(20) - 10}px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(#{random(40) - 20}px, #{random(40) - 20}px) scale(0);
+  }
+}
+
+/* For small devices */
+@media screen and (max-width: 350px) {
+  .skills__tab-btn {
+    padding: 0.5rem 1rem;
+    
+    span {
+      display: none;
+    }
+    
+    i {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 568px) {
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  .skills__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+

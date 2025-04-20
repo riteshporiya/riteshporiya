@@ -1,0 +1,460 @@
+@import '../../../assets/scss/variables';
+
+// Define responsive breakpoints for consistency
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktop: 1200px;
+
+/*==================== HOME ====================*/
+.home {
+  position: relative;
+  overflow: hidden;
+  
+  &__container {
+    position: relative;
+    z-index: 1;
+    
+    @media screen and (max-width: $mobile) {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
+
+  &__content {
+    // Bootstrap grid used in HTML, so no need for custom flex here
+    gap: 2rem;
+    padding-top: 1rem;
+    
+    @media (min-width: $tablet) {
+      padding-top: 2rem;
+    }
+    
+    @media (max-width: $mobile) {
+      gap: 1rem;
+    }
+  }
+  
+  &__left {
+    // Bootstrap handles flex and alignment
+    width: 100%;
+    @media (min-width: $tablet) {
+      width: auto;
+    }
+  }
+  
+  &__right {
+    width: 100%;
+    @media (min-width: $tablet) {
+      width: auto;
+    }
+  }
+
+  &__img-container {
+    position: relative;
+    width: 70vw;
+    max-width: 220px;
+    height: 70vw;
+    max-height: 220px;
+    margin-bottom: 2rem;
+    
+    @media (min-width: $tablet) {
+      max-width: 280px;
+      max-height: 280px;
+      width: 280px;
+      height: 280px;
+    }
+    
+    @media (max-width: $mobile) {
+      max-width: 180px;
+      max-height: 180px;
+      width: 180px;
+      height: 180px;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  &__img-backdrop {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background: var(--accent-gradient);
+    border-radius: var(--border-radius-lg);
+    filter: blur(8px);
+    opacity: 0.6;
+    top: 10%;
+    left: 10%;
+    z-index: -1;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius-lg);
+    object-fit: cover;
+    border: 4px solid var(--container-color);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    rotate: 90deg;
+    
+    @media (max-width: $mobile) {
+      border-width: 3px;
+    }
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+  
+  &__img-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      
+      &-1 {
+        width: 30px;
+        height: 30px;
+        background: var(--first-color);
+        top: -10px;
+        right: -10px;
+        opacity: 0.8;
+      }
+      
+      &-2 {
+        width: 20px;
+        height: 20px;
+        background: var(--second-color);
+        bottom: -5px;
+        left: -5px;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__social {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  &__social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    font-size: 1.25rem;
+    background-color: var(--container-color);
+    color: var(--first-color);
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    
+    @media (max-width: $mobile) {
+      width: 36px;
+      height: 36px;
+      font-size: 1.1rem;
+    }
+
+    &:hover {
+      color: #fff;
+      background: var(--accent-gradient);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  &__greeting {
+    display: block;
+    font-size: var(--small-font-size);
+    color: var(--first-color);
+    margin-bottom: var(--mb-0-5);
+    font-weight: var(--font-medium);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-size: var(--big-font-size);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--mb-1);
+    
+    &-text {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    @media screen and (max-width: $tablet) {
+      font-size: 2.25rem;
+    }
+    
+    @media screen and (max-width: $mobile) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: var(--h3-font-size);
+    color: var(--text-color);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--mb-1);
+    
+    @media screen and (max-width: $tablet) {
+      font-size: 1.2rem;
+    }
+    
+    @media screen and (max-width: $mobile) {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__description {
+    margin-bottom: var(--mb-2);
+    max-width: 600px;
+    line-height: 1.8;
+    
+    @media screen and (max-width: $tablet) {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    @media screen and (max-width: $mobile) {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: var(--mb-1-5);
+    }
+  }
+  
+  &__stats {
+    margin: 2rem 0 2rem 0;
+    // Bootstrap's row/col handles layout
+    
+    @media (max-width: $tablet) {
+      margin: 1.75rem 0;
+    }
+    
+    @media (max-width: $mobile) {
+      margin: 1.5rem 0;
+    }
+  }
+  
+  &__stat {
+    @media (max-width: $mobile) {
+      padding: 0.5rem;
+    }
+  }
+  
+  &__stat-number {
+    font-size: 1.75rem;
+    font-weight: var(--font-bold);
+    color: var(--title-color);
+    
+    @media (max-width: $tablet) {
+      font-size: 1.5rem;
+    }
+    
+    @media (max-width: $mobile) {
+      font-size: 1.25rem;
+    }
+  }
+  
+  &__stat-label {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    
+    @media (max-width: $mobile) {
+      font-size: 0.75rem;
+    }
+  }
+  
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: var(--mb-1-5);
+    
+    @media screen and (max-width: $small) {
+      flex-direction: column;
+      width: 100%;
+      
+      .button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+
+  &__scroll {
+    display: none;
+    
+    @media screen and (min-width: $medium) {
+      display: block;
+      margin-top: 4rem;
+    }
+
+    &-button {
+      display: inline-flex;
+      align-items: center;
+      color: var(--first-color);
+      transition: 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(0.25rem);
+        color: var(--first-color-alt);
+      }
+    }
+
+    &-mouse {
+      font-size: 2rem;
+      margin-right: 0.5rem;
+    }
+
+    &-name {
+      font-size: var(--small-font-size);
+      color: var(--title-color);
+      font-weight: var(--font-medium);
+      margin-right: var(--mb-0-25);
+    }
+
+    &-arrow {
+      font-size: 1.25rem;
+    }
+  }
+  
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    
+    &-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.2;
+      
+      &-1 {
+        width: 500px;
+        height: 500px;
+        background: var(--first-color);
+        top: -150px;
+        right: -100px;
+      }
+      
+      &-2 {
+        width: 400px;
+        height: 400px;
+        background: var(--second-color);
+        bottom: -100px;
+        left: -100px;
+      }
+      
+      &-3 {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(var(--first-color), var(--second-color));
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      
+      @media screen and (max-width: $small) {
+        &-1 {
+          width: 300px;
+          height: 300px;
+        }
+        
+        &-2 {
+          width: 250px;
+          height: 250px;
+        }
+        
+        &-3 {
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+  }
+}
+
+/* Typing cursor animation */
+.typed-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  opacity: 1;
+  
+  &--blink {
+    animation: blink 0.7s infinite;
+  }
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Button styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(90deg, var(--px-theme) 0%, var(--px-theme-2) 100%);
+  color: #fff;
+  border-radius: var(--border-radius);
+  font-weight: var(--font-semi-bold);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: #fff;
+  }
+  
+  &__icon {
+    font-size: 1.25rem;
+    margin-left: var(--mb-0-5);
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover &__icon {
+    transform: translateX(5px);
+  }
+  
+  &--outline {
+    background: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--first-color);
+    
+    &:hover {
+      background: var(--first-color);
+      color: #fff;
+    }
+  }
+  
+  @media screen and (max-width: $small) {
+    padding: 0.8rem 1.25rem;
+    font-size: 0.9rem;
+    
+    &__icon {
+      font-size: 1.1rem;
+    }
+  }
+}

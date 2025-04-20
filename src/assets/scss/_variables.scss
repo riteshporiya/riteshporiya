@@ -1,0 +1,38 @@
+// Variables SCSS file
+
+// Theme Colors
+$primary: #AF2676; // Bootstrap primary blue
+$text-secondary: #6c757d; // Bootstrap secondary text
+
+// Header height
+$header-height: 3rem;
+
+// Font Weight
+$font-medium: 500;
+$font-semi-bold: 600;
+
+// Responsive breakpoints
+$small: 350px;
+$medium: 568px;
+$large: 768px;
+$extra-large: 1024px;
+
+// Z-index
+$z-tooltip: 10;
+$z-fixed: 100;
+$z-modal: 1000;
+
+// Border radius
+$border-radius-sm: 0.25rem;
+$border-radius: 0.5rem;
+$border-radius-lg: 1rem;
+
+// Transitions
+$transition-default: all 0.4s ease;
+$transition-slow: all 0.6s ease;
+$transition-fast: all 0.2s ease;
+
+:root {
+  // Pass variables to CSS custom properties
+  --header-height: #{$header-height};
+} 

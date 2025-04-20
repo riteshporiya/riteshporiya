@@ -1,0 +1,83 @@
+<section class="portfolio-section" id="portfolio">
+  <div class="bg-decoration left"></div>
+  <div class="bg-decoration right"></div>
+
+  <div class="section-container">
+    <div class="section-title-container" data-aos="fade-up">
+      <h2 class="section-title">{{ languageService.translate('portfolio.title') }}</h2>
+      <p class="section-subtitle">{{ languageService.translate('portfolio.subtitle') }}</p>
+    </div>
+
+    <div class="portfolio-categories" data-aos="fade-up">
+      <button 
+        class="category-btn" 
+        [class.active]="activeFilter === 'all'"
+        (click)="setFilter('all')">
+        {{ languageService.translate('portfolio.allProjects') }}
+      </button>
+      <button 
+        class="category-btn" 
+        [class.active]="activeFilter === 'web'"
+        (click)="setFilter('web')">
+        {{ languageService.translate('portfolio.webProjects') }}
+      </button>
+      <button 
+        class="category-btn" 
+        [class.active]="activeFilter === 'mobile'"
+        (click)="setFilter('mobile')">
+        {{ languageService.translate('portfolio.mobileProjects') }}
+      </button>
+      <button 
+        class="category-btn" 
+        [class.active]="activeFilter === 'design'"
+        (click)="setFilter('design')">
+        {{ languageService.translate('portfolio.designProjects') }}
+      </button>
+    </div>
+
+    <div class="portfolio-grid">
+      <div 
+        *ngFor="let item of filteredPortfolio; let i = index" 
+        class="portfolio__card"
+        [attr.data-index]="i"
+        [attr.reveal]="isVisible"
+        (mouseenter)="onCardHover(i)">
+        
+        <div class="portfolio__card-inner">
+          <div class="portfolio__image-container">
+            <img [src]="item.image" [alt]="item.title" class="portfolio__image" loading="lazy">
+            <div class="portfolio__links">
+              <a [href]="item.demoLink" target="_blank" class="portfolio__link">
+                <i class="fas fa-eye"></i>
+                <span>{{ languageService.translate('portfolio.demo') }}</span>
+              </a>
+              <a [href]="item.githubLink" target="_blank" class="portfolio__link">
+                <i class="fab fa-github"></i>
+                <span>{{ languageService.translate('portfolio.github') }}</span>
+              </a>
+            </div>
+          </div>
+          
+          <div class="portfolio__content">
+            <h3 class="portfolio__title">{{ item.title }}</h3>
+            <p class="portfolio__description">{{ item.description }}</p>
+            <div class="portfolio__technologies">
+              <span *ngFor="let tech of item.technologies" class="portfolio__tech-tag">{{ tech }}</span>
+            </div>
+          </div>
+          
+          <div class="portfolio__particles" *ngIf="activeCard === i">
+            <span *ngFor="let _ of [0,1,2,3,4,5,6,7,8,9]" class="particle"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-load-more" *ngIf="hasMoreProjects">
+      <button class="load-more-btn" (click)="loadMoreProjects()">
+        <span>{{ languageService.translate('portfolio.showMore') }}</span>
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+  </div>
+</section>
