@@ -1,6 +1,6 @@
 # Ritesh Poriya`s MEAN Stack Developer
 
-![Ritesh Poriya](./src/assets/images/github-header-image.png)
+![Ritesh Poriya](./src/assets/img/github-header-image.jpeg)
 ## 👋 Hello World!
 
 I'm Ritesh Poriya, a passionate and experienced MEAN Stack Developer with a knack for turning ideas into reality. My expertise spans across the entire web development stack, from front-end to back-end, and I thrive in creating robust, scalable, and user-friendly applications.
